@@ -38,11 +38,12 @@ public class InvoiceServiceTest {
 
     /* Test Case to check total Fare of multiple rides for given Distance and Time */
     @Test
-    public void givenMultipleRide_ShouldReturnTotalFare(){
+    public void givenMultipleRide_ShouldReturnInvoiceSummary(){
         Ride[] rides = {new Ride(2.0, 5),
                         new Ride(0.1, 1)
         };
-        double fare = invoiceGenerator.calculateFare(rides);
-        Assert.assertEquals(30, fare , 0.0);
+        InvoiceSummary invoiceSummary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30);
+        Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
     }
 }
