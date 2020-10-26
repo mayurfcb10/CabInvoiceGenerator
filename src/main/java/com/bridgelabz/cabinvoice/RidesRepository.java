@@ -18,6 +18,10 @@ public class RidesRepository {
         }
     }
 
+    /**
+     * @param userId
+     * @return List of rides
+     */
     public List<Ride> getRidesData(String userId) {
         return ridesData.get(userId);
     }

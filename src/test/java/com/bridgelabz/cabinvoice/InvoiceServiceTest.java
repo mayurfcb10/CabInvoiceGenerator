@@ -47,6 +47,7 @@ public class InvoiceServiceTest {
         Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
     }
 
+    /* Test Case to check Invoice Summary of multiple rides for given Distance and Time */
     @Test
     public void givenUserIdAndRides_shouldReturnInvoiceSummary() {
         Ride[] rides = {new Ride(2.0, 5),

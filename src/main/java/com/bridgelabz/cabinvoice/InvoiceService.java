@@ -40,10 +40,18 @@ public class InvoiceService {
         this.ridesRepository = new RidesRepository();
     }
 
+    /**
+     * @param userId and rides
+     * @return void
+     */
     public void addRides(String userId, Ride[] rides) {
         ridesRepository.addRides(userId, rides);
     }
 
+    /**
+     * @param userId
+     * @return InvoiceSummary
+     */
     public InvoiceSummary getInvoiceSummary(String userId) {
         List<Ride> ridesList = ridesRepository.getRidesData(userId);
         return calculateFare(ridesList.toArray(new Ride[ridesList.size()]));
