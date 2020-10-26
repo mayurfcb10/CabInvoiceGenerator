@@ -1,6 +1,11 @@
 package com.bridgelabz.cabinvoice;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class InvoiceGeneratorService {
+    RidesRepository ridesRepository;
     private static final double MINIMUM_COST_PER_KM = 10 ;
     private static final int MINIMUM_COST_PER_TIME = 1;
     private static final double MINIMUM_FARE = 5;
@@ -29,5 +34,18 @@ public class InvoiceGeneratorService {
             totalFare += this.calculateFare(ride.getDistance(), ride.getTime());
         }
         return new InvoiceSummary(rides.length, totalFare);
+    }
+
+    public InvoiceGeneratorService(){
+        this.ridesRepository = new RidesRepository();
+    }
+
+    public void addRides(String userId, Ride[] rides) {
+        ridesRepository.addRides(userId, rides);
+    }
+
+    public InvoiceSummary getInvoiceSummary(String userId) {
+        List<Ride> ridesList = ridesRepository.getRidesData(userId);
+        return calculateFare(ridesList.toArray(new Ride[ridesList.size()]));
     }
 }
