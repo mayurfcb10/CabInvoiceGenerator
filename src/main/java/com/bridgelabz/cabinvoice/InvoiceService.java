@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class InvoiceGeneratorService {
+public class InvoiceService {
     RidesRepository ridesRepository;
     private static final double MINIMUM_COST_PER_KM = 10 ;
     private static final int MINIMUM_COST_PER_TIME = 1;
@@ -36,7 +36,7 @@ public class InvoiceGeneratorService {
         return new InvoiceSummary(rides.length, totalFare);
     }
 
-    public InvoiceGeneratorService(){
+    public InvoiceService(){
         this.ridesRepository = new RidesRepository();
     }
 
